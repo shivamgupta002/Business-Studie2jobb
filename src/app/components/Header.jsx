@@ -1,21 +1,6 @@
-"use client";
-import {
-  AppBar,
-  Toolbar,
-  Button,
-  Typography,
-  IconButton,
-  Box,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  Backdrop,
-} from "@mui/material";
-import { Menu as MenuIcon } from "@mui/icons-material";
-import React, { Suspense, useState } from "react";
-import SignUp from "./SignUp";
-import Login from "./Login";
+"use client"
+import React, { useState } from "react";
+import "../css/Header.css"; 
 
 const Home = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -26,153 +11,78 @@ const Home = () => {
   const openSignUp = () => setIsSignUp((prev) => !prev);
 
   // Toggles the Drawer open/close
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-    setDrawerOpen(open);
-  };
-
-  // Custom styling for the desktop menu links
-  const linkStyles = {
-    textDecoration: "none",
-    color: "#000",
-    fontWeight: 500,
-    margin: "0 10px",
-    "&:hover": {
-      color: "#0B2F9F",
-    },
-  };
+  const toggleDrawer = () => setDrawerOpen((prev) => !prev);
 
   return (
     <>
-      <AppBar position="static" sx={{ backgroundColor: "#fff", color: "#000" }}>
-        <Toolbar sx={{ justifyContent: "space-between" }}>
-          {/* Logo/Brand Name */}
-          <Typography
-            variant="h5"
-            component="div"
-            sx={{ fontWeight: 600, color: "#16325B" }}
-          >
-            Studie2Jobb
-          </Typography>
+      {/* Header */}
+      <header className="header">
+        <div className="logo">Studie2Jobb</div>
+        <div className="hamburger-menu" onClick={toggleDrawer}>
+          ☰
+        </div>
+        <nav className="nav-menu">
+          <a href="/">Home</a>
+          <a href="/job">Browse a Jobs</a>
+          <a href="/candidate">Candidates</a>
+          <a href="/blog">Blog</a>
+          <a href="/contact">Contact</a>
+        </nav>
+        <div className="auth-buttons">
+          <button className="signup-button" onClick={openSignUp}>
+            SignUp
+          </button>
+          <button className="login-button" onClick={openLogin}>
+            Login
+          </button>
+        </div>
+      </header>
 
-          {/* Mobile Hamburger Menu */}
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ display: { xs: "block", md: "none" } }}
-            onClick={toggleDrawer(true)}
-          >
-            <MenuIcon />
-          </IconButton>
-
-          {/* Centered Menu for Desktop */}
-          <Box
-            sx={{
-              display: { xs: "none", md: "flex" },
-              flexGrow: 1,
-              justifyContent: "center",
-            }}
-          >
-            <Button href="/" sx={linkStyles}>
+      {/* Mobile Drawer */}
+      {drawerOpen && (
+        <div className="mobile-drawer">
+          <div className="drawer-item">
+            <a href="/" onClick={toggleDrawer}>
               Home
-            </Button>
-            <Button href="/job" sx={linkStyles}>
+            </a>
+          </div>
+          <div className="drawer-item">
+            <a href="/job" onClick={toggleDrawer}>
               Find a Job
-            </Button>
-            <Button href="/recruiter" sx={linkStyles}>
+            </a>
+          </div>
+          <div className="drawer-item">
+            <a href="/recruiter" onClick={toggleDrawer}>
               Recruiters
-            </Button>
-            <Button href="/candidate" sx={linkStyles}>
+            </a>
+          </div>
+          <div className="drawer-item">
+            <a href="/candidate" onClick={toggleDrawer}>
               Candidates
-            </Button>
-            <Button href="/blog" sx={linkStyles}>
+            </a>
+          </div>
+          <div className="drawer-item">
+            <a href="/blog" onClick={toggleDrawer}>
               Blog
-            </Button>
-            <Button href="/contact" sx={linkStyles}>
+            </a>
+          </div>
+          <div className="drawer-item">
+            <a href="/contact" onClick={toggleDrawer}>
               Contact
-            </Button>
-          </Box>
-
-          {/* Register and Sign In Buttons */}
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: "#424242", marginRight: 1 }}
-              onClick={openSignUp}
-            >
-              SignUp
-            </Button>
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: "#0B2F9F", marginRight: 1 }}
-              onClick={openLogin}
-            >
-              Login
-            </Button>
-          </Box>
-        </Toolbar>
-      </AppBar>
-
-      {/* Drawer for Mobile Menu */}
-      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
-        <Box sx={{ width: 250 }} role="presentation">
-          <List>
-            {[
-              { text: "Home", href: "/" },
-              { text: "Find a Job", href: "/job" },
-              { text: "Recruiters", href: "/recruiter" },
-              { text: "Candidates", href: "/candidate" },
-              { text: "Blog", href: "/blog" },
-              { text: "Contact", href: "/contact" },
-            ].map((item) => (
-              <ListItem
-                button
-                key={item.text}
-                component="a"
-                href={item.href}
-                onClick={toggleDrawer(false)}
-              >
-                <ListItemText primary={item.text} />
-              </ListItem>
-            ))}
-            <ListItem
-              button
-              onClick={() => {
-                toggleDrawer(false);
-                openSignUp();
-              }}
-            >
-              <ListItemText primary="Register" />
-            </ListItem>
-            <ListItem
-              button
-              onClick={() => {
-                toggleDrawer(false);
-                openLogin();
-              }}
-            >
-              <ListItemText primary="Sign In" />
-            </ListItem>
-          </List>
-        </Box>
-      </Drawer>
-
-      {isLogin && (
-        <Suspense fallback={<Backdrop open />}>
-          <Login isLogin={isLogin} />
-        </Suspense>
+            </a>
+          </div>
+          <div className="drawer-item" onClick={() => { toggleDrawer(); openSignUp(); }}>
+            Register
+          </div>
+          <div className="drawer-item" onClick={() => { toggleDrawer(); openLogin(); }}>
+            Sign In
+          </div>
+        </div>
       )}
-      {isSignUp && (
-        <Suspense fallback={<Backdrop open />}>
-          <SignUp isSignUp={isSignUp} />
-        </Suspense>
-      )}
+
+      {/* Modals */}
+      {isLogin && <div className="modal">Login Form Here</div>}
+      {isSignUp && <div className="modal">SignUp Form Here</div>}
     </>
   );
 };
