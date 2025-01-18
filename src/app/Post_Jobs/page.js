@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "../_components/Header";
 
-const Blogs = () => {
+const Post_Jobs = () => {
   return (
     <>
       <Header />
-      <div>Blogs</div>
+      <div>Post_Jobs</div>
     </>
   );
 };
 
-export default Blogs;
+export default Post_Jobs;
