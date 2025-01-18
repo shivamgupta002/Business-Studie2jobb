@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import "../_css/Header.css";
 import AOS from "aos";
@@ -13,14 +13,33 @@ const Home = () => {
   }, []);
 
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const toggleDrawer = () => setDrawerOpen((prev) => !prev);
+
+  const handleScroll = () => {
+    if (window.scrollY > 20) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
       {/* Header */}
-      <header className="header" data-aos="fade-up">
-        <div className="logo">Studie2Jobb</div>
+      <header
+        className={`header ${scrolled ? "scrolled" : ""}`}
+        data-aos="fade-up"
+      >
+        <div className={`logo ${scrolled ? "logo_black" : "logo_white"}`}>Studie2Jobb</div>
         <div className="hamburger-menu" onClick={toggleDrawer}>
           ☰
         </div>
