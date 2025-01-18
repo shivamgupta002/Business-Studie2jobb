@@ -23,10 +23,10 @@ const Home = () => {
         </div>
         <nav className="nav-menu">
           <a href="/">Home</a>
-          <a href="/job">Browse a Jobs</a>
-          <a href="/candidate">Candidates</a>
-          <a href="/blog">Blog</a>
-          <a href="/contact">Contact</a>
+          <a href="/Jobs">Browse a Jobs</a>
+          <a href="/Candidates">Candidates</a>
+          <a href="/Blogs">Blog</a>
+          <a href="/Contacts">Contact</a>
         </nav>
         <div className="auth-buttons">
           <button className="signup-button" onClick={openSignUp}>
@@ -47,8 +47,8 @@ const Home = () => {
             </a>
           </div>
           <div className="drawer-item">
-            <a href="/job" onClick={toggleDrawer}>
-              Find a Job
+            <a href="/Jobs" onClick={toggleDrawer}>
+              Browse a Job
             </a>
           </div>
           <div className="drawer-item">
@@ -57,17 +57,17 @@ const Home = () => {
             </a>
           </div>
           <div className="drawer-item">
-            <a href="/candidate" onClick={toggleDrawer}>
+            <a href="/Candidates" onClick={toggleDrawer}>
               Candidates
             </a>
           </div>
           <div className="drawer-item">
-            <a href="/blog" onClick={toggleDrawer}>
+            <a href="/Blogs" onClick={toggleDrawer}>
               Blog
             </a>
           </div>
           <div className="drawer-item">
-            <a href="/contact" onClick={toggleDrawer}>
+            <a href="/Contacts" onClick={toggleDrawer}>
               Contact
             </a>
           </div>
