@@ -1,4 +1,4 @@
-// import styles from "./page.module.css";
+"use client"
 import Header from "./_components/Header"
 import Hero from "./_components/Hero";
 export default function Home() {

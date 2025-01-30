@@ -3,8 +3,7 @@
     background-size: fill;
     background-repeat: no-repeat;
     background-position: center;
-    /* height: 85vh; */
-    height: 100vh;
+    height: 110vh;
     width: 100vw;
     position: relative;
 }
@@ -24,7 +23,7 @@
 .content {
     color: #fff;
     text-align: center;
-    padding-top: 25vh;
+    padding-top: 35vh;
     margin-bottom: 1.5rem;
 }
 
@@ -34,12 +33,14 @@
     line-height: 1.2;
     font-weight: 400;
     text-align: center;
+    margin: 10px;
 }
 
 .hero_stats {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 
@@ -51,4 +52,7 @@
 
 .hero_figure {
     padding: 0 0.2rem;
+}
+.hero_figure h2 {
+    font-size: 2rem;
 }
