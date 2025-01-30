@@ -1,11 +1,16 @@
 import React from "react";
 import Header from "../_components/Header";
+import MiniHero from "../_components/MiniHero.jsx";
 
 const Post_Jobs = () => {
   return (
     <>
       <Header />
-      <div>Post_Jobs</div>
+      <MiniHero
+        subHeading={"Home"}
+        subHeading2={"JOB POST"}
+        heading={"Post A Job"}
+      />
     </>
   );
 };
