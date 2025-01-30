@@ -97,13 +97,32 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.job {
+    /* border: 1px solid black; */
+    padding-left:5px ;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+.job .icon{
+    color: #837a7a;
+}
+.job input {
+    border: none;
+}
+
 .searchBox input,
 .searchBox select {
     padding: 10px;
     font-size: 13px;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     border-radius: 5px;
     width: 200px;
+}
+.searchBox .location_input{
+    border: none;
 }
 
 .searchButton {
