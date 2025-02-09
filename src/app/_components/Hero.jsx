@@ -21,7 +21,7 @@ const Hero = () => {
 
     setTimeout(() => {
       setStartCounting(true);
-    }, 1000);
+    }, 1500);
   }, []);
 
   return (

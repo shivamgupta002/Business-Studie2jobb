@@ -78,11 +78,6 @@ const Home = () => {
               </a>
             </div>
             <div className="drawer-item">
-              <a href="/recruiter" onClick={toggleDrawer}>
-                Recruiters
-              </a>
-            </div>
-            <div className="drawer-item">
               <a href="/Candidates" onClick={toggleDrawer}>
                 Candidates
               </a>
