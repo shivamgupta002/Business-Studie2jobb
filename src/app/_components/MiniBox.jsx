@@ -1,13 +1,14 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import ComputerIcon from "@mui/icons-material/Computer";
 import SchoolIcon from "@mui/icons-material/School";
 import BrushIcon from "@mui/icons-material/Brush";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
-import "../_css/MiniBox.css"
-
+import "../_css/MiniBox.css";
 
 const jobCategories = [
     { title: "Website & Software", icon: <ComputerIcon fontSize="large" />, color: "#0066FF" },
@@ -19,10 +20,35 @@ const jobCategories = [
 ];
 
 const MiniBox = () => {
+    const miniBoxRef = useRef(null);
+    const [aosInitialized, setAosInitialized] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !aosInitialized) {
+                    AOS.init({ duration: 1500, once: true });
+                    setAosInitialized(true);
+                }
+            },
+            { threshold: 0.2 } 
+        );
+
+        if (miniBoxRef.current) {
+            observer.observe(miniBoxRef.current);
+        }
+
+        return () => {
+            if (miniBoxRef.current) {
+                observer.unobserve(miniBoxRef.current);
+            }
+        };
+    }, [aosInitialized]);
+
     return (
-        <div className="miniBox-container">
-            <h2 className="miniBox-title">Job Categories</h2>
-            <div className="miniBox-grid">
+        <div className="miniBox-container" ref={miniBoxRef}>
+            <h2 className="miniBox-title" data-aos="fade-up">Job Categories</h2>
+            <div className="miniBox-grid" data-aos="fade-up">
                 {jobCategories.map((category, index) => (
                     <div
                         key={index}

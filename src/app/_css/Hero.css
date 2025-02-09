@@ -23,17 +23,41 @@
 .content {
     color: #fff;
     text-align: center;
-    padding-top: 35vh;
+    padding-top: 25vh;
     margin-bottom: 1.5rem;
+    font-size: 20px;
 }
 
 .hero_h1 {
-    font-size: 54px;
+    font-size: 48px;
     color: #fff;
     line-height: 1.2;
     font-weight: 400;
     text-align: center;
     margin: 10px;
+}
+
+/* Responsive Text */
+@media (max-width: 768px) {
+    .content {
+        font-size: 18px;
+        padding-top: 22vh;
+    }
+
+    .hero_h1 {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        font-size: 16px;
+        padding-top: 18vh;
+    }
+
+    .hero_h1 {
+        font-size: 30px;
+    }
 }
 
 /* Hero Stats */
@@ -48,17 +72,42 @@
 .stats_1 {
     color: #fff;
     display: flex;
-    padding: 2.2rem 6.5rem;
+    padding: 2rem 5rem;
+    align-items: center;
 }
 
 .hero_figure {
-    padding: 0 0.2rem;
+    padding: 0 0.5rem;
 }
 
 .hero_figure h2 {
     font-size: 2rem;
 }
 
+/* Responsive Stats */
+@media (max-width: 768px) {
+    .stats_1 {
+        padding: 1.5rem 3rem;
+    }
+
+    .hero_figure h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats_1 {
+        padding: 1rem;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero_figure h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Search Section */
 .search_section {
     margin-top: 40px;
 }
@@ -88,28 +137,30 @@
     color: white;
 }
 
+/* Search Box */
 .searchBox {
     display: flex;
     gap: 10px;
     justify-content: center;
-    /* background: white; */
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
 }
 
+/* Input Fields */
 .job {
-    /* border: 1px solid black; */
-    padding-left:5px ;
+    padding-left: 5px;
     background-color: #fff;
     display: flex;
-    justify-content: center;
     align-items: center;
     border-radius: 5px;
 }
-.job .icon{
+
+.job .icon {
     color: #837a7a;
 }
+
 .job input {
     border: none;
 }
@@ -118,11 +169,24 @@
 .searchBox select {
     padding: 10px;
     font-size: 13px;
-    /* border: 1px solid #ddd; */
     border-radius: 5px;
     width: 200px;
 }
-.searchBox .location_input{
+
+/* Responsive Search Box */
+@media (max-width: 768px) {
+    .searchBox {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .searchBox input,
+    .searchBox select {
+        width: 80%;
+    }
+}
+
+.searchBox .location_input {
     border: none;
 }
 

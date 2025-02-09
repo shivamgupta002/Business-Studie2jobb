@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "../_css/Hero.css";
 import PublicIcon from "@mui/icons-material/Public";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
-import WorkIcon from '@mui/icons-material/Work';
+import WorkIcon from "@mui/icons-material/Work";
 import BadgeIcon from "@mui/icons-material/Badge";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -12,6 +12,7 @@ import CountUp from "react-countup";
 const Hero = () => {
   const [startCounting, setStartCounting] = useState(false);
   const [activeTab, setActiveTab] = useState("job");
+  const [showSearchBox, setShowSearchBox] = useState(false); 
 
   useEffect(() => {
     AOS.init({
@@ -22,6 +23,10 @@ const Hero = () => {
     setTimeout(() => {
       setStartCounting(true);
     }, 1500);
+
+    setTimeout(() => {
+      setShowSearchBox(true);
+    }, 1000);
   }, []);
 
   return (
@@ -64,73 +69,60 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="search_section">
-          <div className="tabs">
-            <button
-              className={`tab ${activeTab === "job" ? "active" : ""}`}
-              onClick={() => setActiveTab("job")}
-            >
-              Find a Job
-            </button>
-            <button
-              className={`tab ${activeTab === "candidate" ? "active" : ""}`}
-              onClick={() => setActiveTab("candidate")}
-            >
-              Find a Candidate
-            </button>
-          </div>
-
-          {/* <div className="searchBox">
-            <div className="job">
-              <WorkIcon className="icon" />
-              <input type="text" placeholder="eg. Graphic, Web Developer" />
+        {/* SEARCH SECTION - Show only after 1s */}
+        {showSearchBox && (
+          <div className="search_section" data-aos="fade-up">
+            <div className="tabs">
+              <button
+                className={`tab ${activeTab === "job" ? "active" : ""}`}
+                onClick={() => setActiveTab("job")}
+              >
+                Find a Job
+              </button>
+              <button
+                className={`tab ${activeTab === "candidate" ? "active" : ""}`}
+                onClick={() => setActiveTab("candidate")}
+              >
+                Find a Candidate
+              </button>
             </div>
-            <select>
-              <option disabled value="">Category</option>
-              <option>Full Time</option>
-              <option>Part Time</option>
-              <option>Freelance</option>
-              <option>Internship</option>
-            </select>
-            <input type="text" placeholder="Location" className="location_input" />
-            <button className="searchButton">Search</button>
-          </div> */}
-          <div className="searchBox">
-            {activeTab === "job" ? (
-              <>
-                <div className="job">
-                  <WorkIcon className="icon" />
-                  <input type="text" placeholder="eg. Graphic, Web Developer" />
-                </div>
-                <select defaultValue="">
-                  <option disabled value="">Category</option>
-                  <option>Full Time</option>
-                  <option>Part Time</option>
-                  <option>Freelance</option>
-                  <option>Internship</option>
-                </select>
-                <input type="text" placeholder="Location" className="location_input" />
-              </>
-            ) : (
-              <>
-                <div className="job">
-                  <BadgeIcon className="icon" />
-                  <input type="text" placeholder="eg. Name, Skills" />
-                </div>
-                <select defaultValue="">
-                  <option disabled value="">Industry</option>
-                  <option>IT</option>
-                  <option>Marketing</option>
-                  <option>Healthcare</option>
-                  <option>Education</option>
-                </select>
-                <input type="text" placeholder="Location" className="location_input" />
-              </>
-            )}
-            <button className="searchButton">Search</button>
-          </div>
 
-        </div>
+            <div className="searchBox">
+              {activeTab === "job" ? (
+                <>
+                  <div className="job">
+                    <WorkIcon className="icon" />
+                    <input type="text" placeholder="eg. Graphic, Web Developer" />
+                  </div>
+                  <select defaultValue="">
+                    <option disabled value="">Category</option>
+                    <option>Full Time</option>
+                    <option>Part Time</option>
+                    <option>Freelance</option>
+                    <option>Internship</option>
+                  </select>
+                  <input type="text" placeholder="Location" className="location_input" />
+                </>
+              ) : (
+                <>
+                  <div className="job">
+                    <BadgeIcon className="icon" />
+                    <input type="text" placeholder="eg. Name, Skills" />
+                  </div>
+                  <select defaultValue="">
+                    <option disabled value="">Industry</option>
+                    <option>IT</option>
+                    <option>Marketing</option>
+                    <option>Healthcare</option>
+                    <option>Education</option>
+                  </select>
+                  <input type="text" placeholder="Location" className="location_input" />
+                </>
+              )}
+              <button className="searchButton">Search</button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
