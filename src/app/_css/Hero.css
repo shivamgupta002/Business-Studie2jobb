@@ -1,13 +1,11 @@
-/* Background Styling */
 .bg_hero {
     background-image: url('/images/bg_1.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 100vh;
+    height: 95vh;
     width: 100vw;
     position: relative;
-    overflow-y: hidden;
 }
 
 .bg_color {
