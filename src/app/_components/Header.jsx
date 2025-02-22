@@ -59,52 +59,51 @@ const Home = () => {
       </header>
 
       {/* Mobile Drawer */}
-      {drawerOpen && (
-        <div className="mobile-drawer">
-          <div className="drawer-header">
-            <button className="close-button" onClick={toggleDrawer}>
-              ✕
-            </button>
+      <div className={`mobile-drawer ${drawerOpen ? "open" : ""}`}>
+        <div className="drawer-header">
+          <button className="close-button" onClick={toggleDrawer}>
+            ✕
+          </button>
+        </div>
+        <div className="drawer-content">
+          <div className="drawer-item">
+            <a href="/" onClick={toggleDrawer}>
+              Home
+            </a>
           </div>
-          <div className="drawer-content">
-            <div className="drawer-item">
-              <a href="/" onClick={toggleDrawer}>
-                Home
-              </a>
-            </div>
-            <div className="drawer-item">
-              <a href="/Jobs" onClick={toggleDrawer}>
-                Browse a Job
-              </a>
-            </div>
-            <div className="drawer-item">
-              <a href="/Candidates" onClick={toggleDrawer}>
-                Candidates
-              </a>
-            </div>
-            <div className="drawer-item">
-              <a href="/Blogs" onClick={toggleDrawer}>
-                Blog
-              </a>
-            </div>
-            <div className="drawer-item">
-              <a href="/Contacts" onClick={toggleDrawer}>
-                Contact
-              </a>
-            </div>
-            <div className="drawer-item">
-              <a href="/Post_Jobs">
-                <button className="button post_button">Post a Job</button>
-              </a>
-            </div>
-            <div className="drawer-item">
-              <a href="/Get_Jobs">
-                <button className="button want_button">Want a Job</button>
-              </a>
-            </div>
+          <div className="drawer-item">
+            <a href="/Jobs" onClick={toggleDrawer}>
+              Browse a Job
+            </a>
+          </div>
+          <div className="drawer-item">
+            <a href="/Candidates" onClick={toggleDrawer}>
+              Candidates
+            </a>
+          </div>
+          <div className="drawer-item">
+            <a href="/Blogs" onClick={toggleDrawer}>
+              Blog
+            </a>
+          </div>
+          <div className="drawer-item">
+            <a href="/Contacts" onClick={toggleDrawer}>
+              Contact
+            </a>
+          </div>
+          <div className="drawer-item">
+            <a href="/Post_Jobs">
+              <button className="button post_button">Post a Job</button>
+            </a>
+          </div>
+          <div className="drawer-item">
+            <a href="/Get_Jobs">
+              <button className="button want_button">Want a Job</button>
+            </a>
           </div>
         </div>
-      )}
+      </div>
+
     </>
   );
 };

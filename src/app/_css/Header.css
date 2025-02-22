@@ -9,7 +9,8 @@
   padding: 20px;
   background: transparent;
   color: white;
-  transition: background-color 1s ease, color 0.5s ease, border-bottom 1s ease;
+  transition: all 3s ease-in-out;
+  /* transition: background-color 1s ease, color 0.5s ease, border-bottom 1s ease; */
 }
 
 .header.scrolled {
@@ -95,7 +96,7 @@
 .mobile-drawer {
   position: fixed;
   top: 0;
-  left: 0;
+  left: -100%; /* Start off-screen */
   width: 100%;
   height: 100%;
   background-color: #fff;
@@ -103,6 +104,11 @@
   z-index: 1000;
   display: flex;
   flex-direction: column;
+  transition: left 0.8s ease-in-out; /* Smooth transition */
+}
+
+.mobile-drawer.open {
+  left: 0; /* Slide into view */
 }
 
 .drawer-header {
